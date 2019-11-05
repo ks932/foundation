@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNote extends Migration
+class CreateProduitPanierTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,17 +13,16 @@ class CreateNote extends Migration
      */
     public function up()
     {
-        Schema::create('note', function (Blueprint $table) {
+        Schema::create('produit_panier', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('etoile');
-            $table->string('pseudo');
-            $table->integer('produit_id')->unsigned()->nullable();
-            $table->string('titre_produit');
+           $table->integer('produit_id')->unsigned()->nullable();
+            $table->integer('panier_id')->unsigned()->nullable();
             $table->timestamps();
         });
 
-        Schema::table('note', function (Blueprint $table) {
+       Schema::table('produit_panier', function (Blueprint $table) {
             $table->foreign('produit_id')->references('id')->on('produit');
+            $table->foreign('panier_id')->references('id')->on('panier');
         });
     }
 
@@ -34,6 +33,6 @@ class CreateNote extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('note');
+        Schema::dropIfExists('produit_panier');
     }
 }
