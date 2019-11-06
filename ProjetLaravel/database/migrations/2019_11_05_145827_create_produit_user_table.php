@@ -21,7 +21,7 @@ class CreateProduitUserTable extends Migration
         });
 
         Schema::table('produit_user', function (Blueprint $table) {
-            $table->foreign('produit_id')->references('id')->on('produit')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('produit_id')->references('id')->on('produit');
             $table->foreign('user_id')->references('id')->on('users');
         });
     }

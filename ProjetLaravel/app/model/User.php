@@ -38,14 +38,14 @@ class User extends Authenticatable
     ];
 
     public function panier(){
-        return $this->hasMany('App\panier');
+        return $this->hasMany('App\model\panier');
     }
 
     public function note(){
-        return $this->hasMany('App\note');
+        return $this->hasMany('App\model\note');
     }
     
     public function produit(){
-        return $this->belongsToMany('App\produit');
+        return $this->belongsToMany('App\model\produit');
     }
 }
